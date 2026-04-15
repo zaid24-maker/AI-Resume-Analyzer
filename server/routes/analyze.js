@@ -14,7 +14,21 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 router.post(`/analyze`, upload.single(`resume`), async (req, res) => {
     try{
-        const resumeText = await extractTextFromPDF(req.file.buffer); 
+    if (!process.env.GEMINI_API_KEY) {
+      return res.status(500).json({
+        success: false,
+        message: `Missing GEMINI_API_KEY in server environment.`,
+      });
+    }
+
+    if (!req.file) {
+      return res.status(400).json({
+        success: false,
+        message: `Please upload a resume PDF file.`,
+      });
+    }
+
+    const resumeText = await extractTextFromPDF(req.file.buffer); 
     const model = genAI.getGenerativeModel({ model: `gemini-2.5-flash-lite`});
 
     const prompt = `

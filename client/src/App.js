@@ -194,7 +194,7 @@ function App() {
             📄 Download Report
           </button>
           <div className="section">
-            <h3> Strengths</h3>
+            <h3>Strengths</h3>
             <ul>
               {result.strengths.map((item, index) => (
                 <li key={index}>{item}</li>
@@ -202,7 +202,7 @@ function App() {
             </ul>
           </div>
           <div className="section">
-            <h3> Weaknesses</h3>
+            <h3>Weaknesses</h3>
             <ul>
               {result.weaknesses.map((item, index) => (
                 <li key={index}>{item}</li>
@@ -210,7 +210,7 @@ function App() {
             </ul>
           </div>
           <div className="section">
-            <h3> Suggestions</h3>
+            <h3>Suggestions</h3>
             <ul>
               {result.suggestions.map((item, index) => (
                 <li key={index}>{item}</li>
